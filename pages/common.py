@@ -1,6 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 
 
@@ -22,3 +23,9 @@ class CommonOps:
 
     def alert(self):
         return self._wait.until(ec.alert_is_present())
+    
+    def double_click(self, element):
+        return self._action.double_click(element)
+    
+    # def escape_key_down(self):
+    #    self._action.key_down(Keys.ESCAPE).perform()

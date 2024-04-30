@@ -1,3 +1,4 @@
+from selenium.webdriver.firefox.webdriver import WebDriver
 from pages.dynamicControl import DynamcControls
 from pages.formAuth import FormAuthentication
 from pages.addRemove import AddRemoveElement
@@ -5,7 +6,7 @@ from pages.contextMenu import ContextMenu
 
 
 
-def test_form_authentication(driver):
+def test_form_authentication(driver: WebDriver):
     form = FormAuthentication(driver)
 
     form.navigate_to_form_page()
@@ -18,7 +19,7 @@ def test_form_authentication(driver):
     form.click_logout_button()
     assert "logged out" in form.check_login_logout_status().text
 
-def test_add_remove_element(driver):
+def test_add_remove_element(driver: WebDriver):
     add_rem = AddRemoveElement(driver)
     add_rem.navigate_to_add_remove_page()
     add_rem.click_add_element_button()
@@ -29,7 +30,7 @@ def test_add_remove_element(driver):
     delete_button = add_rem.check_delete_button()
     assert delete_button == "No Delete Button"
 
-def test_context_menu(driver):
+def test_context_menu(driver: WebDriver):
     context = ContextMenu(driver)
     context.navigate_to_context_menu_page()
     context.right_click_context_menu()
@@ -39,8 +40,10 @@ def test_context_menu(driver):
     context.accept_alert()
 
     assert context.alert_is_accepted() != ""
-    
-def test_dynamic_control_checkbox(driver):
+
+    context.dismiss_context_menu()
+
+def test_dynamic_control_checkbox(driver: WebDriver):
     checkbox = DynamcControls(driver)
     checkbox.navigate_to_dynamic_controls_page()
 
@@ -53,7 +56,7 @@ def test_dynamic_control_checkbox(driver):
     
     assert checkbox.check_checkbox_element() == "Checkbox Element Presents"
 
-def test_dynamic_control_input_text(driver):
+def test_dynamic_control_input_text(driver: WebDriver):
     input_text = DynamcControls(driver)
     input_text.navigate_to_dynamic_controls_page()
     

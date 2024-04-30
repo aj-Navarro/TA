@@ -1,3 +1,4 @@
+import pytest
 from selenium.webdriver.common.by import By
 from .common import CommonOps
 
@@ -8,6 +9,7 @@ class ContextMenu(CommonOps):
     CONTEXT_MENU = (By.LINK_TEXT, "Context Menu")
     CONTEXT_BOX = (By.ID, "hot-spot")
     PAGE_TITLE = (By.XPATH, "//div[@class='example']/h3")
+    CONTENT = (By.ID, "content")
 
 
     def navigate_to_context_menu_page(self):
@@ -25,3 +27,10 @@ class ContextMenu(CommonOps):
 
     def alert_is_accepted(self):
         return self.wait_for(self.PAGE_TITLE).text
+
+    def dismiss_context_menu(self):
+        content = self.find(self.CONTENT)
+        self.double_click(content).perform()
+    
+    # def dismiss_context_menu(self):
+    #    self.escape_key_down()
