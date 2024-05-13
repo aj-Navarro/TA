@@ -3,7 +3,7 @@ from pages.dynamicControl import DynamcControls
 from pages.formAuth import FormAuthentication
 from pages.addRemove import AddRemoveElement
 from pages.contextMenu import ContextMenu
-
+from pages.challengingDom import ChallengingDom
 
 
 def test_form_authentication(driver: WebDriver):
@@ -69,3 +69,13 @@ def test_dynamic_control_input_text(driver: WebDriver):
     input_text.click_control_button("input")
 
     assert input_text.checking_input_text_element() == False
+
+def test_challenging_dom(driver: WebDriver):
+    table = ChallengingDom(driver)
+    table.navigate_to_challenging_dom_page()
+
+    table.click_edit()
+    table.click_delete()
+    table.click_second_button()
+
+    assert table.page_displayed() == "Challenging DOM"
