@@ -1,4 +1,5 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
+from pages.checkboxes import Checkboxes
 from pages.dynamicControl import DynamcControls
 from pages.formAuth import FormAuthentication
 from pages.addRemove import AddRemoveElement
@@ -79,3 +80,14 @@ def test_challenging_dom(driver: WebDriver):
     table.click_second_button()
 
     assert table.page_displayed() == "Challenging DOM"
+
+def test_checkboxes(driver: WebDriver):
+    checkbox = Checkboxes(driver)
+    checkbox.navigate_to_checkboxes_page()
+
+    checkbox.click_checkbox_01()
+    checkbox.click_checkbox_02()
+    checkbox.click_checkbox_01()
+    checkbox.click_checkbox_02()
+
+    assert checkbox.page_displayed() == "Checkboxes"
