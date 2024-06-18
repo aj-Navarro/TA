@@ -19,7 +19,7 @@ class DynamcControls(CommonOps):
     def check_checkbox_element(self):
         try:
             self.wait_for(self.CHECKBOX_LOCATOR)
-            return ("Checkbox Element Presents")
+            return ("Checkbox Element Present")
         except TimeoutException:
             return ("No Checkbox Element")
 

@@ -48,14 +48,14 @@ def test_dynamic_control_checkbox(driver: WebDriver):
     checkbox = DynamcControls(driver)
     checkbox.navigate_to_dynamic_controls_page()
 
-    assert checkbox.check_checkbox_element() == "Checkbox Element Presents"
+    assert checkbox.check_checkbox_element() == "Checkbox Element Present"
     checkbox.click_control_button("checkbox")
 
     assert checkbox.check_checkbox_element() == "No Checkbox Element"
 
     checkbox.click_control_button("checkbox")
     
-    assert checkbox.check_checkbox_element() == "Checkbox Element Presents"
+    assert checkbox.check_checkbox_element() == "Checkbox Element Present"
 
 def test_dynamic_control_input_text(driver: WebDriver):
     input_text = DynamcControls(driver)
